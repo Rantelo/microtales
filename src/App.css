@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+.card {
+  border: 1px solid gray;
+  border-radius: 4px;
+  color: darkslategray;
+  margin: 10px;
+  padding: 10px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+  height: 80%;
+  border: 1px solid orange;
+}
+.actions {
+  height: 20%;
+  border: 1px solid yellow;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.actions a {
+  width: 48%;
+  height: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.actions a.nope { background: #f7c7c3; }
+.actions a.yeap { background: #c5e6c5; }
+
