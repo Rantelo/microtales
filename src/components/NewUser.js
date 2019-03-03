@@ -9,19 +9,13 @@ class NewUser extends Component {
   }
 
   submitName() {
-    console.log(this.name.current.value);
-    localStorage.setItem(
-      this.props.localDB,
-      JSON.stringify({
-        name: this.name.current.value,
-        id: Math.random().toString(36).substring(2,15) //random id
-      })
-    );
-    this.props.userUpdated();
+    this.props.userUpdated({
+      name: this.name.current.value,
+      id: Math.random().toString(36).substring(2,15) //random id
+    });
   }
 
   render() {
-    console.log(this.name.current);
     return (
       <div>
         <p>¡Hola! En esta página podrás ayudarme a construir mi nuevo libro. Te pido la mayor sinceridad posible al votar por los microcuentos.</p>
