@@ -2,28 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import {get} from 'axios';
 import NewUser from './components/NewUser';
-import { getShuffledIndexes } from './helpers.js';
+import Tales from './components/Tales';
+import { getShuffledIndexes, CHUNK_SIZE } from './helpers.js';
 
-const Card = ({children}) => (
-  <div className="card">
-    <div className="content">
-      {children}
-    </div>
-
-    <div className="actions">
-      <button className="nope"
-        onClick={() => console.log('clicked')} >
-        meeh...
-      </button>
-      <button className="yeap"
-        onClick={() => console.log('clicked')} >
-        like it!
-      </button>
-    </div>
-  </div>
-)
-
-const Tales = () => <Card> Que esta pasando </Card>;
 const TALES = "talesDB";
 const USER_INFO = "microtalesDB";
 
@@ -33,6 +14,7 @@ class App extends Component {
 
     this.userUpdated = this.userUpdated.bind(this);
     this.getTales = this.getTales.bind(this);
+    this.chunkVoted = this.chunkVoted.bind(this);
 
     let initialState = {};
 
@@ -69,9 +51,7 @@ class App extends Component {
   }
 
   userUpdated(user) {
-    // Show welcome message
-    // getuser from localstorage and add shuffled indexes
-    // update user in state so view can change
+    // TODO: Show welcome message
 
     const to_vote = getShuffledIndexes(this.state.tales.length);
 
@@ -81,9 +61,26 @@ class App extends Component {
     console.log("userUpdated");
   }
 
+  chunkVoted(chunk, scores) {
+    console.log('Finish with chunk!', chunk, scores);
+    let {to_vote} = this.state;
+    to_vote.shift();
+    this.setState({ to_vote })
+    // TODO:
+    // 1. delete first from to_vote
+    //   - update it in localStorage
+    // 2. submit scores to db
+  }
+
   render() {
+    const curr_chunk = this.state.to_vote[0];
+    const chunkIdx = curr_chunk * CHUNK_SIZE;
     const view = this.state.user ?
-      <Tales /> :
+      <Tales
+        tales={this.state.tales.slice(chunkIdx, chunkIdx + CHUNK_SIZE )}
+        chunk={curr_chunk}
+        doneVoting={this.chunkVoted}
+      /> :
       <NewUser userUpdated={this.userUpdated} localDB={USER_INFO} />;
 
     return (

@@ -1,4 +1,4 @@
-const CHUNK_SIZE = 2;
+export const CHUNK_SIZE = 3;
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -7,7 +7,7 @@ function shuffle(array) {
     }
 }
 
-const getShuffledIndexes = count => {
+export const getShuffledIndexes = count => {
   let extra = (count % CHUNK_SIZE == 0) ? 0 : 1;
 
   let final_lenght = Math.floor(count/CHUNK_SIZE) + extra;
@@ -17,4 +17,3 @@ const getShuffledIndexes = count => {
   return indexes;
 }
 
-export { getShuffledIndexes }

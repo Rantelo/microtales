@@ -17,6 +17,7 @@
 .content {
   height: 80%;
   border: 1px solid orange;
+  text-align: left;
 }
 .actions {
   height: 20%;
