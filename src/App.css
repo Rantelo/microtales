@@ -27,7 +27,7 @@
   justify-content: space-evenly;
 }
 
-.actions a {
+.actions button {
   width: 48%;
   height: 96%;
   display: flex;
@@ -43,6 +43,6 @@
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.actions a.nope { background: #f7c7c3; }
-.actions a.yeap { background: #c5e6c5; }
+.actions button.nope { background: #f7c7c3; }
+.actions button.yeap { background: #c5e6c5; }
 
