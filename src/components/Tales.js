@@ -13,14 +13,14 @@ const Card = ({children, vote}) => (
 
     <button onClick={writeSomething}>Delete local</button>
     <div className="actions">
-      <button className="nope"
+      <div className="nope"
         onClick={() => vote(false)} >
-        meeh...
-      </button>
-      <button className="yeap"
+        👎 meeh...
+      </div>
+      <div className="yeap"
         onClick={() => vote(true)} >
-        like it!
-      </button>
+        👍 Me gusta!
+      </div>
     </div>
   </div>
 );
