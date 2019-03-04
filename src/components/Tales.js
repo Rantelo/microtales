@@ -7,6 +7,7 @@ const Card = ({children, vote}) => (
       {children}
     </div>
 
+    <button onClick={() => localStorage.clear()}>Delete local</button>
     <div className="actions">
       <button className="nope"
         onClick={() => vote(false)} >
@@ -34,10 +35,14 @@ class Tales extends Component {
   vote(vote) {
     let { votes, idx } = this.state;
     votes[idx] = vote;
+    console.log(`vote:${vote}, idx:${idx}, votes:${votes}`);
 
     if (votes.length >= CHUNK_SIZE) {
       console.log("IM HERE");
-      this.props.doneVoting(this.props.chunk, votes);
+      this.setState(
+        { idx: 0, votes: [] },
+        this.props.doneVoting(this.props.chunk, votes)
+      )
     } else {
       this.setState({ idx: idx + 1, votes });
     }

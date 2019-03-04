@@ -4,6 +4,7 @@ import {get} from 'axios';
 import NewUser from './components/NewUser';
 import Tales from './components/Tales';
 import { getShuffledIndexes, CHUNK_SIZE } from './helpers.js';
+import fire from './config/fire';
 
 const TALES = "talesDB";
 const USER_INFO = "microtalesDB";
@@ -34,19 +35,22 @@ class App extends Component {
   }
 
   getTales() {
-    get("https://firebasestorage.googleapis.com/v0/b/microtales-ba.appspot.com/o/tales.csv?alt=media&token=ddd8a368-8c21-4ac0-963e-2e14ac82df4b")
-      .then(response => {
-        const resp = response.data.split("\n");
+    fire.storage().ref('tales.csv').getDownloadURL()
+      .then(e => {
+        get(e)
+          .then(response => {
+            const resp = response.data.split("\n");
 
-        const tales = resp
-          .filter(e => e)
-          .map(e => e.replace(/\"/g, "").replace(/\\n/, "\n")); //clean data
+            const tales = resp
+              .filter(e => e)
+              .map(e => e.replace(/\"/g, "").replace(/\\n/, "\n")); //clean data
 
-        this.setState({ tales });
-        localStorage.setItem(TALES, JSON.stringify(tales));
-      })
-      .catch(err => {
-        console.log(err)
+            this.setState({ tales });
+            localStorage.setItem(TALES, JSON.stringify(tales));
+          })
+          .catch(err => {
+            console.log(err)
+          })
       })
   }
 
@@ -66,22 +70,29 @@ class App extends Component {
     let {to_vote} = this.state;
     to_vote.shift();
     this.setState({ to_vote })
+    let { user } = JSON.parse(localStorage.getItem(USER_INFO));
+    localStorage.setItem(USER_INFO, JSON.stringify({user, to_vote}));
     // TODO:
-    // 1. delete first from to_vote
-    //   - update it in localStorage
     // 2. submit scores to db
   }
 
   render() {
-    const curr_chunk = this.state.to_vote[0];
+    const curr_chunk = this.state.to_vote ? this.state.to_vote[0] : 0;
     const chunkIdx = curr_chunk * CHUNK_SIZE;
+
     const view = this.state.user ?
-      <Tales
-        tales={this.state.tales.slice(chunkIdx, chunkIdx + CHUNK_SIZE )}
-        chunk={curr_chunk}
-        doneVoting={this.chunkVoted}
-      /> :
-      <NewUser userUpdated={this.userUpdated} localDB={USER_INFO} />;
+      (
+        (this.state.to_vote == null || this.state.to_vote.length === 0) ?
+        <div>DONE</div> :
+        (
+          <Tales
+            tales={this.state.tales.slice(chunkIdx, chunkIdx + CHUNK_SIZE )}
+            chunk={curr_chunk}
+            doneVoting={this.chunkVoted}
+          />
+        )
+      ) :
+      <NewUser userUpdated={this.userUpdated} />;
 
     return (
       <div className="App">
