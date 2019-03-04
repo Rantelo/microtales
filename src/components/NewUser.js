@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import me from '../images/me.jpg';
 
 class NewUser extends Component {
   constructor(props) {
@@ -15,10 +16,17 @@ class NewUser extends Component {
     });
   }
 
+
+  // TODO: add emojis
   render() {
     return (
-      <div>
-        <p>¡Hola! En esta página podrás ayudarme a construir mi nuevo libro. Te pido la mayor sinceridad posible al votar por los microcuentos.</p>
+      <div className="card login">
+        <img src={me} alt="Bárbara Antelo" />
+        <p>¡Hola! Soy Bárbara Antelo</p>
+        <p>Bienvenid@ a mi nuevo proyecto!</p>
+        <p> Estoy creando un libro de microcuentos y con tu ayuda estoy segura que lograremos ¡el mejor libro de todos!</p>
+        <p className="upper"> Sólo dale <i className="yeap">Me gusta!</i> si la historia te gusta
+        y <i className="nope">meeh..</i> si no.</p>
         <p>¡Gracias por tu ayuda!</p>
         <input type="text" ref={this.name} placeholder="Ingresa tu nombre" />
         <button onClick={this.submitName}>Guardar</button>

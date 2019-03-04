@@ -8,7 +8,7 @@ function shuffle(array) {
 }
 
 export const getShuffledIndexes = count => {
-  let extra = (count % CHUNK_SIZE == 0) ? 0 : 1;
+  let extra = (count % CHUNK_SIZE === 0) ? 0 : 1;
 
   let final_lenght = Math.floor(count/CHUNK_SIZE) + extra;
   let indexes = Array(final_lenght).fill(0).map((e,i) => i);

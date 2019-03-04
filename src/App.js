@@ -28,7 +28,6 @@ class App extends Component {
     if (localStorage.getItem(USER_INFO) == null) {
       this.state = { ...initialState, user: null, to_vote: null }
     } else {
-      console.log("load user");
       const { user, to_vote } = JSON.parse(localStorage.getItem(USER_INFO));
       this.state = { user, to_vote, ...initialState }
     }
@@ -43,7 +42,8 @@ class App extends Component {
 
             const tales = resp
               .filter(e => e)
-              .map(e => e.replace(/\"/g, "").replace(/\\n/, "\n")); //clean data
+            // eslint-disable-next-line
+              .map(e => e.replace(/\"/g, "").replace(/\\n/g, "\n")); //clean data
 
             this.setState({ tales });
             localStorage.setItem(TALES, JSON.stringify(tales));
@@ -62,18 +62,20 @@ class App extends Component {
     this.setState({ user, to_vote })
     localStorage.setItem(USER_INFO, JSON.stringify({ user, to_vote }));
 
-    console.log("userUpdated");
+    fire.database().ref(`users/${user.id}`).set({
+      name: user.name,
+      id: user.id,
+      to_vote
+    })
   }
 
   chunkVoted(chunk, scores) {
-    console.log('Finish with chunk!', chunk, scores);
     let {to_vote} = this.state;
     to_vote.shift();
     this.setState({ to_vote })
     let { user } = JSON.parse(localStorage.getItem(USER_INFO));
     localStorage.setItem(USER_INFO, JSON.stringify({user, to_vote}));
-    // TODO:
-    // 2. submit scores to db
+    fire.database().ref(`users/${this.state.user.id}/votes/${chunk}`).set(scores)
   }
 
   render() {

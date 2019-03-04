@@ -3,12 +3,16 @@
 }
 
 .card {
-  border: 1px solid gray;
   border-radius: 4px;
   color: darkslategray;
-  margin: 10px;
-  padding: 10px;
+  margin: 15px;
+  padding: 15px;
   height: 85vh;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.card-tale {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,6 +48,35 @@
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.actions button.nope { background: #f7c7c3; }
-.actions button.yeap { background: #c5e6c5; }
+.yeap {
+  background: #93e093;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(147,224,147,1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(147,224,147,1);
+  box-shadow: 0px 0px 10px 0px rgba(147,224,147,1);
+}
+.nope {
+  background: #ff727c;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(255,114,124,1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(255,114,124,1);
+  box-shadow: 0px 0px 10px 0px rgba(255,114,124,1);
+}
 
+.login img {
+  width: 30%;
+  border-radius: 100%;
+  border: 2px solid white;
+  filter: grayscale(1);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.upper {
+  line-height: 45px;
+}

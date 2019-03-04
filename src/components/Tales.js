@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { CHUNK_SIZE }from '../helpers';
+import { CHUNK_SIZE } from '../helpers';
+
+const writeSomething = () => {
+  localStorage.clear();
+}
 
 const Card = ({children, vote}) => (
-  <div className="card">
+  <div className="card card-tale">
     <div className="content">
       {children}
     </div>
 
-    <button onClick={() => localStorage.clear()}>Delete local</button>
+    <button onClick={writeSomething}>Delete local</button>
     <div className="actions">
       <button className="nope"
         onClick={() => vote(false)} >
@@ -35,10 +39,8 @@ class Tales extends Component {
   vote(vote) {
     let { votes, idx } = this.state;
     votes[idx] = vote;
-    console.log(`vote:${vote}, idx:${idx}, votes:${votes}`);
 
     if (votes.length >= CHUNK_SIZE) {
-      console.log("IM HERE");
       this.setState(
         { idx: 0, votes: [] },
         this.props.doneVoting(this.props.chunk, votes)
