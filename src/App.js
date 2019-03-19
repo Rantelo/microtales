@@ -3,6 +3,7 @@ import './App.css';
 import {get} from 'axios';
 import NewUser from './components/NewUser';
 import Tales from './components/Tales';
+import Thanks from './components/Thanks';
 import { getShuffledIndexes, CHUNK_SIZE } from './helpers.js';
 import fire from './config/fire';
 
@@ -85,7 +86,7 @@ class App extends Component {
     const view = this.state.user ?
       (
         (this.state.to_vote == null || this.state.to_vote.length === 0) ?
-        <div>DONE</div> :
+        <Thanks /> :
         (
           <Tales
             tales={this.state.tales.slice(chunkIdx, chunkIdx + CHUNK_SIZE )}

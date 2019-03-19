@@ -15,11 +15,11 @@ const Card = ({children, vote}) => (
     <div className="actions">
       <div className="nope"
         onClick={() => vote(false)} >
-        👎 meeh...
+        <span aria-label="dislike" role="img">👎</span> meeh...
       </div>
       <div className="yeap"
         onClick={() => vote(true)} >
-        👍 Me gusta!
+        <span aria-label="like" role="img">👍</span> Me gusta!
       </div>
     </div>
   </div>
