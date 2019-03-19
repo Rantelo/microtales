@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import me from '../images/me.jpg';
 
+let h;
 class NewUser extends Component {
   constructor(props) {
     super(props);
@@ -16,11 +17,14 @@ class NewUser extends Component {
     });
   }
 
+  componentWillMount() {
+    h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  }
 
   // TODO: add emojis
   render() {
     return (
-      <div className="card login">
+      <div className="card login" style={{height: (h*0.85)}}>
         <img src={me} alt="Bárbara Antelo" />
         <p>¡Hola! Soy Bárbara Antelo</p>
         <p>Bienvenid@ a mi nuevo proyecto!</p>
