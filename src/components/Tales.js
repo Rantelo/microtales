@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { CHUNK_SIZE } from '../helpers';
 
-const writeSomething = () => {
-  localStorage.clear();
-}
-
 const Card = ({children, vote}) => (
   <div className="card card-tale">
     <div className="content">
       {children}
     </div>
 
-    <button onClick={writeSomething}>Delete local</button>
     <div className="actions">
       <div className="nope"
         onClick={() => vote(false)} >
