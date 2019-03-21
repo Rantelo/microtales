@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import { Smile } from '../helpers';
 import me from '../images/me.jpg';
 
 let h;
@@ -34,6 +35,7 @@ class NewUser extends Component {
         <p>¡Gracias por tu ayuda!</p>
         <input type="text" ref={this.name} placeholder="Ingresa tu nombre" />
         <button onClick={this.submitName}>Guardar</button>
+        <p style={{fontSize: 8, textAlign: "right"}}>Tu nombre vendrá impreso en el libro <Smile size={8} /></p>
       </div>
     )
   }

@@ -1,4 +1,5 @@
-export const CHUNK_SIZE = 3;
+import React from 'react';
+export const CHUNK_SIZE = 10;
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -17,3 +18,10 @@ export const getShuffledIndexes = count => {
   return indexes;
 }
 
+export const getUserName = (key) => {
+  const { user } = JSON.parse(localStorage.getItem(key))
+  return user.name;
+}
+
+export const Heart = ({size=15}) => <span aria-label="heart emoji" role="img" style={{fontSize: size}}>❤️</span> ;
+export const Smile = ({size=15}) => <span aria-label="smile emoji" role="img" style={{fontSize: size}}>😊</span> ;

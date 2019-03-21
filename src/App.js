@@ -4,11 +4,11 @@ import {get} from 'axios';
 import NewUser from './components/NewUser';
 import Tales from './components/Tales';
 import Thanks from './components/Thanks';
-import { getShuffledIndexes, CHUNK_SIZE } from './helpers.js';
+import { getShuffledIndexes, getUserName, CHUNK_SIZE } from './helpers.js';
 import fire from './config/fire';
 
 const TALES = "talesDB";
-const USER_INFO = "microtalesDB";
+export const USER_INFO = "microtalesDB";
 
 class App extends Component {
   constructor(props) {
@@ -95,7 +95,7 @@ class App extends Component {
           />
         )
       ) :
-      <NewUser userUpdated={this.userUpdated} />;
+       <NewUser userUpdated={this.userUpdated} />;
 
     return (
       <div className="App">
