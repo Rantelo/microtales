@@ -35,7 +35,10 @@ class Tales extends Component {
     let { votes, idx } = this.state;
     votes[idx] = vote;
 
-    if (votes.length >= CHUNK_SIZE) {
+    if (
+      (this.props.tales.length !== CHUNK_SIZE && votes.length === this.props.tales.length) ||
+      (votes.length >= CHUNK_SIZE)
+    ) {
       this.setState(
         { idx: 0, votes: [] },
         this.props.doneVoting(this.props.chunk, votes)
