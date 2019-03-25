@@ -4,7 +4,7 @@ import {get} from 'axios';
 import NewUser from './components/NewUser';
 import Tales from './components/Tales';
 import Thanks from './components/Thanks';
-import { getShuffledIndexes, getUserName, CHUNK_SIZE } from './helpers.js';
+import { getShuffledIndexes, CHUNK_SIZE } from './helpers.js';
 import fire from './config/fire';
 
 const TALES = "talesDB";
@@ -92,6 +92,8 @@ class App extends Component {
             tales={this.state.tales.slice(chunkIdx, chunkIdx + CHUNK_SIZE )}
             chunk={curr_chunk}
             doneVoting={this.chunkVoted}
+            leftToVote={this.state.to_vote.length}
+            totalTales={this.state.tales.length}
           />
         )
       ) :

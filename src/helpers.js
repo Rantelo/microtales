@@ -25,3 +25,4 @@ export const getUserName = (key) => {
 
 export const Heart = ({size=15}) => <span aria-label="heart emoji" role="img" style={{fontSize: size}}>❤️</span> ;
 export const Smile = ({size=15}) => <span aria-label="smile emoji" role="img" style={{fontSize: size}}>😊</span> ;
+export const Trophy = ({size=15}) => <span aria-label="smile emoji" role="img" style={{fontSize: size}}>🏆</span>

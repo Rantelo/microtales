@@ -32,10 +32,9 @@ class NewUser extends Component {
         <p> Estoy creando un libro de microcuentos y con tu ayuda estoy segura que lograremos ¡el mejor libro de todos!</p>
         <p className="upper"> Sólo dale <i className="yeap">Me gusta!</i> si la historia te gusta
         y <i className="nope">meeh..</i> si no.</p>
-        <p>¡Gracias por tu ayuda!</p>
+        <p>Tu nombre vendrá impreso en el libro <Smile /></p>
         <input type="text" ref={this.name} placeholder="Ingresa tu nombre" />
         <button onClick={this.submitName}>Guardar</button>
-        <p style={{fontSize: 8, textAlign: "right"}}>Tu nombre vendrá impreso en el libro <Smile size={8} /></p>
       </div>
     )
   }

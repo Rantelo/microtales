@@ -50,22 +50,20 @@
 }
 
 .yeap {
-  background: #93e093;
   color: #373738;
   border-radius: 4px;
   padding: 10px;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(147,224,147,1);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(147,224,147,1);
-  box-shadow: 0px 0px 10px 0px rgba(147,224,147,1);
+  -webkit-box-shadow: inset 0px 0px 10px -3px rgba(147,224,147,1);
+  -moz-box-shadow: inset 0px 0px 10px -3px rgba(147,224,147,1);
+  box-shadow: inset 0px 0px 10px -3px rgba(147,224,147,1);
 }
 .nope {
-  background: #ff727c;
-  color: white;
+  color: #373738;
   border-radius: 4px;
   padding: 10px;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(255,114,124,1);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(255,114,124,1);
-  box-shadow: 0px 0px 10px 0px rgba(255,114,124,1);
+  -webkit-box-shadow: inset 0px 0px 10px -3px rgba(255,114,124,1);
+  -moz-box-shadow: inset 0px 0px 10px -3px rgba(255,114,124,1);
+  box-shadow: inset 0px 0px 10px -3px rgba(255,114,124,1);
 }
 
 .login img {
@@ -80,4 +78,31 @@
 
 .upper {
   line-height: 45px;
+}
+
+.progress {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  padding: 0 15px 0 25px;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: ;
+}
+
+.progress-bar {
+  border-radius: 10px;
+  width: 100%;
+  height: 10px;
+  margin-right: 15px;
+  -webkit-box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+}
+.progress-bar>div {
+  height: 10px;
+  background: #caf2ff;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
